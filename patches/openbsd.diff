@@ -1,0 +1,32 @@
+diff --git a/config.def.h b/config.def.h
+index 6f05dce..a16251f 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -199,6 +199,8 @@ static Shortcut shortcuts[] = {
+ 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
+ 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
+ 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
++	{ MODKEY,               XK_c,           clipcopy,       {.i =  0} },
++	{ MODKEY,               XK_v,           clippaste,      {.i =  0} },
+ };
+ 
+ /*
+diff --git a/config.mk b/config.mk
+index c070a4a..1e15105 100644
+--- a/config.mk
++++ b/config.mk
+@@ -26,10 +26,10 @@ STCFLAGS = $(INCS) $(STCPPFLAGS) $(CPPFLAGS) $(CFLAGS)
+ STLDFLAGS = $(LIBS) $(LDFLAGS)
+ 
+ # OpenBSD:
+-#CPPFLAGS = -DVERSION=\"$(VERSION)\" -D_XOPEN_SOURCE=600 -D_BSD_SOURCE
+-#LIBS = -L$(X11LIB) -lm -lX11 -lutil -lXft \
+-#       `$(PKG_CONFIG) --libs fontconfig` \
+-#       `$(PKG_CONFIG) --libs freetype2`
++CPPFLAGS = -DVERSION=\"$(VERSION)\" -D_XOPEN_SOURCE=600 -D_BSD_SOURCE
++LIBS = -L$(X11LIB) -lm -lX11 -lutil -lXft \
++       `$(PKG_CONFIG) --libs fontconfig` \
++       `$(PKG_CONFIG) --libs freetype2`
+ 
+ # compiler and linker
+ # CC = c99
